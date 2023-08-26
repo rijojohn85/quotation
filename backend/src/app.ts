@@ -22,6 +22,7 @@ app.use(
 		error: unknown,
 		_req: Request,
 		res: Response,
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		_next: NextFunction
 	) => {
 		let errorMessage = 'An unknown error occurred';
