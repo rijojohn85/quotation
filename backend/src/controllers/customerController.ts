@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import customer from '../models/customer';
+import createHttpError from 'http-errors';
 
 export const getCustomers: RequestHandler = async (
 	_req,
@@ -40,6 +41,10 @@ export const createCustomer: RequestHandler<
 	const primaryEmail: string = req.body.primaryEmail || '';
 	const GST: string = req.body.GST || '';
 	try {
+		const existCustomer = await customer.findOne({ name: name });
+		if (existCustomer) {
+			throw createHttpError(409, 'Customer name already exists');
+		}
 		const newCustomer = await customer.create({
 			name: name,
 			displayName: displayName,
