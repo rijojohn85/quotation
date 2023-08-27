@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import AddCustomerModal from '../components/AddCustomerModal';
 import Message from '../components/Message';
 import { useGetCustomersQuery } from '../slices/customerApiSlice';
+import { Customer } from '../types/customer';
 
 const CustomerListScreen = () => {
 	const onDimiss = () => {
@@ -15,10 +16,15 @@ const CustomerListScreen = () => {
 	};
 	const [showAddCustomerModal, setShowAddCustomerModal] =
 		useState(false);
+	const onAddCustomerSuccess = (newCustomer: Customer) => {
+		console.log(newCustomer);
+		setShowAddCustomerModal(false);
+	};
+
 	const {
 		data: customers,
-		error,
-		isLoading
+		isLoading,
+		error
 	} = useGetCustomersQuery();
 	return (
 		<>
@@ -65,7 +71,10 @@ const CustomerListScreen = () => {
 				</Table>
 			)}
 			{showAddCustomerModal && (
-				<AddCustomerModal onDimiss={onDimiss} />
+				<AddCustomerModal
+					onDimiss={onDimiss}
+					onAddCustomerSuccess={onAddCustomerSuccess}
+				/>
 			)}
 		</>
 	);
