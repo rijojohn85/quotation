@@ -6,19 +6,21 @@ import AddCustomerModal from '../components/AddCustomerModal';
 import Message from '../components/Message';
 import { useGetCustomersQuery } from '../slices/customerApiSlice';
 import { Customer } from '../types/customer';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerListScreen = () => {
 	const onDimiss = () => {
 		setShowAddCustomerModal(false);
 	};
+	const navigate = useNavigate();
 	const showModal = () => {
 		setShowAddCustomerModal(true);
 	};
 	const [showAddCustomerModal, setShowAddCustomerModal] =
 		useState(false);
 	const onAddCustomerSuccess = (newCustomer: Customer) => {
-		console.log(newCustomer);
 		setShowAddCustomerModal(false);
+		navigate(`/customers/${newCustomer._id}`);
 	};
 
 	const {

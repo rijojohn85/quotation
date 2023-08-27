@@ -16,9 +16,18 @@ export const customerApiSlice = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: customer
 			})
+		}),
+		getCustomerById: builder.query<Customer, string>({
+			query: (id) => ({
+				url: `${CUSTOMER_URL}/${id}`
+			}),
+			keepUnusedDataFor: 5
 		})
 	})
 });
 
-export const { useGetCustomersQuery, useAddCustomerMutation } =
-	customerApiSlice;
+export const {
+	useGetCustomerByIdQuery,
+	useGetCustomersQuery,
+	useAddCustomerMutation
+} = customerApiSlice;

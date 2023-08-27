@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import CustomerListScreen from './screens/CustomerListScreen';
+import CustomerScreen from './screens/CustomerScreen';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<App />}>
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
 				index={true}
 				element={<CustomerListScreen />}
 			/>
+			<Route path="/customers/:id" element={<CustomerScreen />} />
 		</Route>
 	)
 );
