@@ -17,11 +17,18 @@ export const customerApiSlice = apiSlice.injectEndpoints({
 				body: customer
 			})
 		}),
+		editCustomer: builder.mutation<Customer, Customer>({
+			query: (customer) => ({
+				url: CUSTOMER_URL,
+				method: 'PUT',
+				body: customer
+			})
+		}),
 		getCustomerById: builder.query<Customer, string>({
 			query: (id) => ({
 				url: `${CUSTOMER_URL}/${id}`
 			}),
-			keepUnusedDataFor: 5
+			keepUnusedDataFor: 0
 		})
 	})
 });
@@ -29,5 +36,6 @@ export const customerApiSlice = apiSlice.injectEndpoints({
 export const {
 	useGetCustomerByIdQuery,
 	useGetCustomersQuery,
-	useAddCustomerMutation
+	useAddCustomerMutation,
+	useEditCustomerMutation
 } = customerApiSlice;

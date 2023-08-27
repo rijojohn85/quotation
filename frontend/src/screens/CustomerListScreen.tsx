@@ -1,3 +1,4 @@
+//TODO create store data to save customers
 import { useState } from 'react';
 import { Table, Row, Col, Button } from 'react-bootstrap';
 import { FaUserPlus } from 'react-icons/fa';
@@ -7,6 +8,7 @@ import Message from '../components/Message';
 import { useGetCustomersQuery } from '../slices/customerApiSlice';
 import { Customer } from '../types/customer';
 import { useNavigate } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const CustomerListScreen = () => {
 	const onDimiss = () => {
@@ -63,11 +65,16 @@ const CustomerListScreen = () => {
 					</thead>
 					<tbody>
 						{customers.map((customer) => (
-							<tr key={customer._id}>
-								<td>{customer.name}</td>
-								<td>{customer.city}</td>
-								<td>{customer.GST}</td>
-							</tr>
+							<LinkContainer
+								key={customer._id}
+								to={`/customers/${customer._id}`}
+							>
+								<tr>
+									<td>{customer.name}</td>
+									<td>{customer.city}</td>
+									<td>{customer.GST}</td>
+								</tr>
+							</LinkContainer>
 						))}
 					</tbody>
 				</Table>

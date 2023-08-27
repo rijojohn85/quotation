@@ -65,6 +65,7 @@ interface UpdateCustomerParams {
 	id: string;
 }
 interface UpdateCustomerBody {
+	_id: string;
 	name: string;
 	displayName: string;
 	address?: string;
@@ -82,7 +83,7 @@ export const updateCustomer: RequestHandler<
 	UpdateCustomerBody,
 	unknown
 > = async (req, res, next) => {
-	const id: string = req.params.id;
+	const id: string = req.body._id;
 	const {
 		name,
 		displayName,
@@ -116,6 +117,7 @@ export const updateCustomer: RequestHandler<
 		});
 		res.status(201).json(updatedCustomer);
 	} catch (error) {
+		console.log(error);
 		next(error);
 	}
 };
