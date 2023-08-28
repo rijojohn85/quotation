@@ -1,5 +1,5 @@
-//TODO add toasts for success and error
-//TODO add loading spinner and error and success toasts
+//TODO: add toasts for success and error
+//TODO: add loading spinner and error and success toasts
 import { useEffect, useState } from 'react';
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
