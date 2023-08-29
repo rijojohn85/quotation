@@ -1,8 +1,7 @@
-//TODO: add toasts for success and error
-//TODO: add loading spinner and error and success toasts
 import { useEffect, useState } from 'react';
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import {
@@ -60,8 +59,10 @@ const CustomerScreen = () => {
 				GST: gst,
 				phone
 			}).unwrap();
+			toast.success('Customer Edited Successfully');
 			navigate('/customers');
 		} catch (error) {
+			toast.error(JSON.stringify(error));
 			console.log(error);
 		}
 	};
@@ -103,7 +104,12 @@ const CustomerScreen = () => {
 							</Col>
 							<Col md={8}>
 								<h2>Edit Customer</h2>
-
+								{editError && (
+									<Message variant="danger">
+										{JSON.stringify(editError)}
+									</Message>
+								)}
+								{isEditing && <Loader />}
 								<Form onSubmit={handleSubmit}>
 									<Form.Group controlId="name" className="my-2">
 										<Form.Label className="my-2">Name</Form.Label>

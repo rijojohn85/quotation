@@ -1,4 +1,3 @@
-//TODO: create store data to save customers
 import { useState } from 'react';
 import { Table, Row, Col, Button } from 'react-bootstrap';
 import { FaUserPlus } from 'react-icons/fa';
