@@ -14,6 +14,7 @@ import {
 import HomeScreen from './screens/HomeScreen';
 import CustomerListScreen from './screens/CustomerListScreen';
 import CustomerScreen from './screens/CustomerScreen';
+import NewQuotationScreen from './screens/NewQuotationScreen';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<App />}>
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
 				element={<CustomerListScreen />}
 			/>
 			<Route path="/customers/:id" element={<CustomerScreen />} />
+			<Route path="/new-quotation" element={<NewQuotationScreen />} />
 		</Route>
 	)
 );
