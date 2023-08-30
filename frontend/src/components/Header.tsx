@@ -21,6 +21,9 @@ const Header = () => {
 						<Nav.Link as={Link} to="/customers">
 							Customers
 						</Nav.Link>
+						<Nav.Link as={Link} to="/new-quotation">
+							New Quotation
+						</Nav.Link>
 						<NavDropdown title="More..." id="basic-nav-dropdown">
 							<NavDropdown.Item as={Link} to="/products">
 								Products
